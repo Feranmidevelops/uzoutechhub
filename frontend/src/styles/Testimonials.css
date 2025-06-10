@@ -1,0 +1,14 @@
+.testimonials {
+  padding: 2rem;
+  text-align: center;
+}
+.testimonials h1 {
+  margin-bottom: 2rem;
+  color: #1F2937;
+}
+.testimonial-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}

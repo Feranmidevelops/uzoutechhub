@@ -1,0 +1,28 @@
+.testimonial-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  max-width: 300px;
+  text-align: center;
+}
+.testimonial-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+.testimonial-card h4 {
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+.testimonial-card .role {
+  font-size: 0.85rem;
+  color: #6B7280;
+  margin-bottom: 0.5rem;
+}
+.testimonial-card blockquote {
+  font-style: italic;
+  color: #374151;
+}

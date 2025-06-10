@@ -1,0 +1,14 @@
+.about {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+}
+.about h1, .about h2 {
+  color: #1F2937;
+}
+.about ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #4B5563;
+}
