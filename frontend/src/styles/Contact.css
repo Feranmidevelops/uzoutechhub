@@ -93,7 +93,7 @@ a.contact-card:hover {
 .contact-card span span {
   color: var(--text-soft);
   font-size: 0.92rem;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .contact-card-icon {
