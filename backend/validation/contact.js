@@ -1,0 +1,37 @@
+// Checks and cleans a contact form submission. Only the known fields are
+// kept, so clients can't set anything else on the saved document.
+
+const LIMITS = { name: 100, email: 200, message: 2000, course: 120 };
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const clean = (value) => (typeof value === 'string' ? value.trim() : '');
+
+const validateContact = (body = {}) => {
+  const data = {
+    name: clean(body.name),
+    email: clean(body.email).toLowerCase(),
+    message: clean(body.message),
+    course: clean(body.course),
+  };
+  const errors = {};
+
+  if (!data.name) errors.name = 'Please tell us your name.';
+  else if (data.name.length > LIMITS.name) errors.name = `Keep your name under ${LIMITS.name} characters.`;
+
+  if (!data.email) errors.email = 'Please add your email address.';
+  else if (data.email.length > LIMITS.email || !EMAIL.test(data.email)) errors.email = 'Please check your email address.';
+
+  if (!data.message) errors.message = 'Please write a short message.';
+  else if (data.message.length > LIMITS.message) errors.message = `Keep your message under ${LIMITS.message} characters.`;
+
+  if (data.course.length > LIMITS.course) errors.course = 'That course name is too long.';
+  if (!data.course) delete data.course;
+
+  return { data, errors, valid: Object.keys(errors).length === 0 };
+};
+
+// A hidden "website" field that people never see. Bots that fill in every
+// field fill this one too.
+const isLikelySpam = (body = {}) => typeof body.website === 'string' && body.website.trim() !== '';
+
+module.exports = { validateContact, isLikelySpam, LIMITS };
