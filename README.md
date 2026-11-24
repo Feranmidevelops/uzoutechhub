@@ -45,6 +45,16 @@ backend `PORT`, update the proxy target in `frontend/vite.config.js` too.
 
 Never commit a real `.env` file. Both folders have an `.env.example` to copy.
 
+## Deploying to Netlify
+
+Everything deploys as one Netlify site (see `netlify.toml`): the React app is served as static files and the Express API runs as a Netlify Function at `/api/*` on the same domain.
+
+1. In MongoDB Atlas, allow connections from Netlify (Network Access → `0.0.0.0/0`, since functions have no fixed IP) and use a strong database user password.
+2. In Netlify → Site configuration → Environment variables, set `MONGO_URI`. Leave `VITE_API_URL` unset.
+3. Deploy with `netlify deploy --build --prod`, or connect the GitHub repo for automatic deploys from `master`.
+
+Check it with `https://<your-site>/api/health`.
+
 ## API
 
 `POST /api/contact` with JSON `{ name, email, message, course? }`.
