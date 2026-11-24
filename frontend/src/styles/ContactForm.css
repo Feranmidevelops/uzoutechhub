@@ -134,3 +134,12 @@
     justify-self: stretch;
   }
 }
+
+/* Focused programmatically after sending; keep it clear of the sticky header */
+.form-success-title {
+  scroll-margin-top: 96px;
+}
+
+.form-success-title:focus {
+  outline: none;
+}

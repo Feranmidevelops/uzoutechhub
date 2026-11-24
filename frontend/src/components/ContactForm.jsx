@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Send, LoaderCircle, CircleCheck, CircleAlert } from 'lucide-react';
 import { submitContact } from '../api/contactApi';
 import { courses } from '../data/courses';
@@ -22,6 +22,13 @@ const empty = { name: '', email: '', course: '', message: '' };
 const ContactForm = ({ initialCourse }) => {
   const [form, setForm] = useState(() => ({ ...empty, course: interestFromSlug(initialCourse) }));
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const successRef = useRef(null);
+
+  // Move focus to the thank-you heading so it is read out and scrolled
+  // into view, even when the shorter panel replaces a long form.
+  useEffect(() => {
+    if (status === 'sent') successRef.current?.focus();
+  }, [status]);
 
   const update = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -40,9 +47,11 @@ const ContactForm = ({ initialCourse }) => {
 
   if (status === 'sent') {
     return (
-      <div className="form-card form-success" role="status">
+      <div className="form-card form-success">
         <CircleCheck aria-hidden="true" />
-        <h2>Thanks, your message is in</h2>
+        <h2 ref={successRef} tabIndex={-1} className="form-success-title">
+          Thanks, your message is in
+        </h2>
         <p>We’ll reply by email within two working days. Keep an eye on your inbox (and spam folder).</p>
         <button type="button" className="btn btn-ghost" onClick={() => setStatus('idle')}>
           Send another message
