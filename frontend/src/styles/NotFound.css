@@ -1,0 +1,24 @@
+.not-found {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding-block: clamp(80px, 14vw, 160px);
+  text-align: center;
+}
+
+.not-found-code {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 12rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: var(--green);
+}
+
+.not-found h1 {
+  font-size: var(--step-3);
+}
+
+.not-found p {
+  color: var(--text-soft);
+}
