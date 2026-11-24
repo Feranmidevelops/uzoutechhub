@@ -23,11 +23,20 @@ const ContactForm = ({ initialCourse }) => {
   const [form, setForm] = useState(() => ({ ...empty, course: interestFromSlug(initialCourse) }));
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const successRef = useRef(null);
+  const errorRef = useRef(null);
+  const nameRef = useRef(null);
+  const focusNameNext = useRef(false);
 
-  // Move focus to the thank-you heading so it is read out and scrolled
-  // into view, even when the shorter panel replaces a long form.
+  // Move focus to whatever just appeared: the thank-you heading (so it is
+  // read out and scrolled into view), the error message, or back to the
+  // first field after "Send another message".
   useEffect(() => {
     if (status === 'sent') successRef.current?.focus();
+    if (status === 'error') errorRef.current?.focus();
+    if (status === 'idle' && focusNameNext.current) {
+      focusNameNext.current = false;
+      nameRef.current?.focus();
+    }
   }, [status]);
 
   const update = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -53,7 +62,14 @@ const ContactForm = ({ initialCourse }) => {
           Thanks, your message is in
         </h2>
         <p>We’ll reply by email within two working days. Keep an eye on your inbox (and spam folder).</p>
-        <button type="button" className="btn btn-ghost" onClick={() => setStatus('idle')}>
+        <button
+          type="button"
+          className="btn btn-ghost"
+          onClick={() => {
+            focusNameNext.current = true;
+            setStatus('idle');
+          }}
+        >
           Send another message
         </button>
       </div>
@@ -69,6 +85,7 @@ const ContactForm = ({ initialCourse }) => {
           <label htmlFor="cf-name">Your name</label>
           <input
             id="cf-name"
+            ref={nameRef}
             name="name"
             type="text"
             autoComplete="name"
@@ -128,7 +145,7 @@ const ContactForm = ({ initialCourse }) => {
       </div>
 
       {status === 'error' && (
-        <p className="form-error" role="alert">
+        <p className="form-error" role="alert" tabIndex={-1} ref={errorRef}>
           <CircleAlert aria-hidden="true" />
           We couldn’t send your message. Check your connection and try again.
         </p>
