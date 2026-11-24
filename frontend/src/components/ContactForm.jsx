@@ -31,7 +31,11 @@ const ContactForm = ({ initialCourse }) => {
   // read out and scrolled into view), the error message, or back to the
   // first field after "Send another message".
   useEffect(() => {
-    if (status === 'sent') successRef.current?.focus();
+    if (status === 'sent' && successRef.current) {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      successRef.current.focus({ preventScroll: true });
+      successRef.current.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
     if (status === 'error') errorRef.current?.focus();
     if (status === 'idle' && focusNameNext.current) {
       focusNameNext.current = false;
