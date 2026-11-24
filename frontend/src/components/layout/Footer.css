@@ -1,0 +1,141 @@
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(64px, 8vw, 96px);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-brand p {
+  max-width: 34ch;
+  margin-top: 18px;
+  color: var(--text-soft);
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  color: var(--text);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-spring);
+}
+
+.footer-social a:hover {
+  background: var(--green);
+  color: var(--on-green);
+  transform: translateY(-3px);
+}
+
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-col h2 {
+  margin-bottom: 18px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.footer-col ul {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-col a,
+.footer-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-soft);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.footer-col a:hover {
+  color: var(--green);
+}
+
+.footer-col svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.footer-live {
+  align-items: flex-start;
+}
+
+.footer-live svg {
+  margin-top: 4px;
+  color: var(--green);
+}
+
+.footer-word {
+  margin-top: clamp(40px, 6vw, 72px);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 24vw, 21rem);
+  font-weight: 800;
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(46, 232, 106, 0.28);
+  user-select: none;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.footer-bottom a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-bottom a:hover {
+  color: var(--green);
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
