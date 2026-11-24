@@ -4,7 +4,7 @@ import { Search, SearchX, ArrowRight, Gift } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import CourseCard from '../components/cards/CourseCard';
 import Reveal from '../components/ui/Reveal';
-import { courses, categories } from '../data/courses';
+import { courses, categories, formatPrice } from '../data/courses';
 import { images } from '../data/images';
 import '../components/home/CoursePreview.css';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -25,7 +25,7 @@ const Courses = () => {
       const inCategory = category === 'All' || c.category === category;
       const matches =
         !q ||
-        [c.title, c.blurb, c.category, ...c.skills].some((text) => text.toLowerCase().includes(q));
+        [c.title, c.blurb, c.category, c.level, formatPrice(c.price), c.youngTechy ? 'Young & Techy' : '', ...c.skills].some((text) => text.toLowerCase().includes(q));
       return inCategory && matches;
     });
   }, [category, query]);
