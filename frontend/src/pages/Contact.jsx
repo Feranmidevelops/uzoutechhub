@@ -4,9 +4,12 @@ import ContactForm from '../components/ContactForm';
 import Reveal from '../components/ui/Reveal';
 import InstagramIcon from '../components/icons/InstagramIcon';
 import { site } from '../data/site';
+import { usePageTitle } from '../hooks/usePageTitle';
 import '../styles/Contact.css';
 
 const Contact = () => {
+  usePageTitle('Contact');
+
   const [params] = useSearchParams();
   const course = params.get('course');
 

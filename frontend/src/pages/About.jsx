@@ -18,6 +18,7 @@ import Testimonials from '../components/home/Testimonials';
 import CtaBand from '../components/home/CtaBand';
 import { images } from '../data/images';
 import { site } from '../data/site';
+import { usePageTitle } from '../hooks/usePageTitle';
 import '../styles/About.css';
 
 const pillars = [
@@ -47,7 +48,10 @@ const values = [
   { icon: Lightbulb, title: 'Adaptability & innovation', text: 'We embrace change and look for creative answers to new needs.' },
 ];
 
-const About = () => (
+const About = () => {
+  usePageTitle('About');
+
+  return (
   <>
     <PageHero
       kicker="About Uzou TechEd Hub"
@@ -136,6 +140,7 @@ const About = () => (
     <Testimonials />
     <CtaBand />
   </>
-);
+  );
+};
 
 export default About;

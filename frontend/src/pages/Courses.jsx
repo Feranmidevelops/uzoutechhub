@@ -7,11 +7,14 @@ import Reveal from '../components/ui/Reveal';
 import { courses, categories } from '../data/courses';
 import { images } from '../data/images';
 import '../components/home/CoursePreview.css';
+import { usePageTitle } from '../hooks/usePageTitle';
 import '../styles/Courses.css';
 
 const freeCount = courses.filter((c) => c.price === 0).length;
 
 const Courses = () => {
+  usePageTitle('Courses');
+
   const [category, setCategory] = useState('All');
   const [query, setQuery] = useState('');
 
