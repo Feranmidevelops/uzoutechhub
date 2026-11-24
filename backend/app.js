@@ -10,7 +10,17 @@ const app = express();
 // Standard security headers, and no "X-Powered-By: Express".
 app.use(helmet());
 
-app.use(cors());
+// The site calls the API from its own origin (the Vite proxy in development,
+// the same domain in production), so cross-origin requests are refused
+// unless CORS_ORIGIN lists the sites allowed to call it, comma-separated.
+const allowedOrigins = (process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+if (allowedOrigins.length > 0) {
+  app.use(cors({ origin: allowedOrigins, methods: ['POST'] }));
+}
+
 app.use(express.json());
 
 app.use('/api/contact', contactRoutes);
