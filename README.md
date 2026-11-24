@@ -40,11 +40,25 @@ backend `PORT`, update the proxy target in `frontend/vite.config.js` too.
 | --- | --- | --- |
 | `backend/.env` | `MONGO_URI` | MongoDB connection string |
 | `backend/.env` | `PORT` | Port for the API (defaults to 5000) |
+| `backend/.env` | `CORS_ORIGIN` | Optional comma-separated list of other sites allowed to call the API |
 | frontend build | `VITE_API_URL` | Origin of the deployed API, e.g. `https://api.example.com`. Leave empty in development. |
 
 Never commit a real `.env` file. Both folders have an `.env.example` to copy.
 
 ## API
 
-`POST /api/contact` with JSON `{ name, email, message, course? }` saves a
-contact submission and returns `201`.
+`POST /api/contact` with JSON `{ name, email, message, course? }`.
+
+- `201` when the message is saved.
+- `400` with `{ error, fields }` when something needs fixing (name up to 100 characters, a valid email, a message up to 2000 characters).
+- `429` after 10 messages from one connection in 15 minutes.
+- `413` for bodies over 10kb.
+
+Unknown fields are ignored, and a hidden `website` field acts as a spam trap.
+
+## Tests
+
+```bash
+cd backend
+npm test
+```
