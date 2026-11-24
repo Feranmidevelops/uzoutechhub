@@ -6,10 +6,12 @@ const app = require('../app');
 const handle = serverless(app);
 let connecting = null;
 
-// Warm function instances reuse one database connection. A failed attempt
-// is forgotten so the next request tries again.
+// Warm function instances reuse one database connection. A failed attempt,
+// or a connection that has since dropped, is forgotten so the next request
+// reconnects (and gets the friendly 503 if the database is still down).
 const connect = () => {
   if (!process.env.MONGO_URI) return Promise.reject(new Error('MONGO_URI is not set'));
+  if (connecting && mongoose.connection.readyState === 0) connecting = null;
   if (!connecting) {
     connecting = mongoose
       .connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 8000 })
