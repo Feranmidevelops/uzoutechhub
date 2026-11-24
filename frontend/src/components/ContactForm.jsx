@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/ContactForm.css';
-import axios from 'axios';
+import { submitContact } from '../api/contactApi';
 
 const ContactForm = ({ page, courses = [] }) => {
   const [form, setForm] = useState({ name: '', email: '', message: '', course: '' });
@@ -13,7 +13,7 @@ const ContactForm = ({ page, courses = [] }) => {
   const handleSubmit = async (e) => {
 	e.preventDefault();
 	try {
-	  await axios.post('http://localhost:5000/api/contact', form);
+	  await submitContact(form);
 	  setSubmitted(true);
 	  setTimeout(() => {
 		setSubmitted(false);

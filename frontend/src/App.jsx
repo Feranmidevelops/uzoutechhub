@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
 import Testimonials from './pages/Testimonials';
-import './styles/main.css';
 
 const App = () => {
   const [page, setPage] = useState('home');
