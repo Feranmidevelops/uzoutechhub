@@ -31,7 +31,7 @@
 
 /* Sized so each of the two lines stays on one line at every width */
 .hero-title {
-  font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.4rem);
+  font-size: clamp(2.05rem, 1.25rem + 3.9vw, 4.4rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.045em;
