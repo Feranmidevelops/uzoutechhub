@@ -18,9 +18,19 @@ app.use(express.json());
 app.use('/api/contact', contactRoutes);
 
 // MongoDB connection
+if (!process.env.MONGO_URI) {
+  console.error('MONGO_URI is not set. Copy .env.example to .env and fill it in.');
+  process.exit(1);
+}
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log('MongoDB connected');
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
-.catch((error) => console.error('MongoDB connection error:', error));
+.catch((error) => {
+  console.error('MongoDB connection error:', error.message);
+  // Exit so the process manager or host restarts us instead of
+  // leaving a process running with no server listening.
+  process.exit(1);
+});
