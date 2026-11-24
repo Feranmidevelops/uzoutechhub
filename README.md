@@ -61,10 +61,10 @@ Check it with `https://<your-site>/api/health`.
 
 - `201` when the message is saved.
 - `400` with `{ error, fields }` when something needs fixing (name up to 100 characters, a valid email, a message up to 2000 characters).
-- `429` after 10 messages from one connection in 15 minutes.
+- `429` after 10 messages from one connection in 15 minutes. On Netlify each function instance keeps its own count, so treat this as best-effort spam protection rather than a hard limit.
 - `413` for bodies over 10kb.
 
-Unknown fields are ignored, and a hidden `website` field acts as a spam trap.
+Unknown fields are ignored, and a hidden `contact_check` field acts as a spam trap.
 
 ## Tests
 
