@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/plus-jakarta-sans';
+import './styles/global.css';
 import App from './App';
-import './styles/Main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-	<App />
+    <App />
   </React.StrictMode>
 );

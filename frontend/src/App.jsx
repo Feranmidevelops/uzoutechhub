@@ -1,28 +1,23 @@
-import React, { useState } from 'react';
-import Navigation from './components/Navigation';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import About from './pages/About';
 import Courses from './pages/Courses';
-import Testimonials from './pages/Testimonials';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
-const App = () => {
-  const [page, setPage] = useState('home');
-
-  const renderPage = () => {
-	switch (page) {
-	  case 'about': return <About />;
-	  case 'courses': return <Courses />;
-	  case 'testimonials': return <Testimonials />;
-	  default: return <Home />;
-	}
-  };
-
-  return (
-	<>
-	  <Navigation currentPage={page} setPage={setPage} />
-	  {renderPage()}
-	</>
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="courses" element={<Courses />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

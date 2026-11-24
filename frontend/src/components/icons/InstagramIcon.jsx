@@ -1,0 +1,22 @@
+// Lucide no longer ships brand icons, so this is a matching outline glyph.
+const InstagramIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+    <circle cx="12" cy="12" r="4.25" />
+    <circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export default InstagramIcon;

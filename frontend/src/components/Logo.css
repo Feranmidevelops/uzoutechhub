@@ -1,0 +1,36 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+}
+
+.logo-mark {
+  flex: none;
+  transition: transform 400ms var(--ease-spring);
+}
+
+.logo:hover .logo-mark {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.logo-text {
+  display: grid;
+  line-height: 1;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.logo-sub {
+  margin-top: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
