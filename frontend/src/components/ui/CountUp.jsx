@@ -7,7 +7,7 @@ const prefersReducedMotion = () =>
 // Counts from 0 to `end` once the number scrolls into view.
 const CountUp = ({ end, suffix = '', duration = 1400 }) => {
   const [ref, inView] = useInView({ threshold: 0.5 });
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(() => (prefersReducedMotion() ? end : 0));
 
   useEffect(() => {
     if (!inView) return undefined;
