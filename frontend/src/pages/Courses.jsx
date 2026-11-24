@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, SearchX, ArrowRight, Gift } from 'lucide-react';
 import PageHero from '../components/PageHero';
@@ -17,6 +17,7 @@ const Courses = () => {
 
   const [category, setCategory] = useState('All');
   const [query, setQuery] = useState('');
+  const searchRef = useRef(null);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -29,9 +30,12 @@ const Courses = () => {
     });
   }, [category, query]);
 
+  // The clear button disappears once there are results again, so put the
+  // keyboard focus somewhere useful: the search box.
   const clear = () => {
     setCategory('All');
     setQuery('');
+    searchRef.current?.focus();
   };
 
   return (
@@ -55,6 +59,7 @@ const Courses = () => {
               <span className="visually-hidden">Search courses</span>
               <Search aria-hidden="true" />
               <input
+                ref={searchRef}
                 type="search"
                 placeholder="Search by course or skill, e.g. Figma"
                 value={query}
