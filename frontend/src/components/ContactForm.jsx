@@ -61,7 +61,7 @@ const ContactForm = ({ initialCourse }) => {
     if (status === 'sending') return;
     setStatus('sending');
     try {
-      await submitContact({ ...form, website: e.currentTarget.website.value });
+      await submitContact({ ...form, contact_check: e.currentTarget.elements.namedItem('contact_check').value });
       setStatus('sent');
       setForm(empty);
     } catch (error) {
@@ -163,8 +163,8 @@ const ContactForm = ({ initialCourse }) => {
       {/* Spam trap: hidden from people and screen readers, but bots that fill
           in every field fill this one too, and the server drops those. */}
       <div className="form-trap" aria-hidden="true">
-        <label htmlFor="cf-website">Website</label>
-        <input id="cf-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+        <label htmlFor="cf-check">Leave this field empty</label>
+        <input id="cf-check" name="contact_check" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
       </div>
 
       {status === 'error' && (

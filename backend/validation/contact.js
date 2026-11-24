@@ -30,8 +30,8 @@ const validateContact = (body = {}) => {
   return { data, errors, valid: Object.keys(errors).length === 0 };
 };
 
-// A hidden "website" field that people never see. Bots that fill in every
-// field fill this one too.
-const isLikelySpam = (body = {}) => typeof body.website === 'string' && body.website.trim() !== '';
+// A hidden "contact_check" field that people never see (named so password
+// managers won't autofill it). Bots that fill in every field fill it too.
+const isLikelySpam = (body = {}) => body.contact_check != null && String(body.contact_check).trim() !== '';
 
 module.exports = { validateContact, isLikelySpam, LIMITS };
