@@ -33,6 +33,8 @@ const PageHero = ({ kicker, title, lead, children, image, secondImage }) => (
           <img
             className="page-hero-photo"
             src={image.src(900)}
+            srcSet={`${image.src(560)} 560w, ${image.src(900)} 900w, ${image.src(1300)} 1300w`}
+            sizes="(max-width: 900px) 88vw, 520px"
             alt={image.alt}
             width="900"
             height="700"
