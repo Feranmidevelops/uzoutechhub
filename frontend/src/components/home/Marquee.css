@@ -1,0 +1,93 @@
+/* The wrapper clips the tilted band so it never widens the page */
+.marquee-wrap {
+  position: relative;
+  overflow: hidden;
+  padding-block: 20px;
+}
+
+.marquee-toggle {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--on-green);
+  color: var(--green);
+  transform: translateY(-50%);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.marquee-toggle:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.marquee-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.marquee {
+  overflow: hidden;
+  padding-block: 18px;
+  background: var(--green);
+  color: var(--on-green);
+  transform: rotate(-1.2deg);
+  margin-inline: -2vw;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+.marquee:hover .marquee-track,
+.marquee.is-paused .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-list {
+  display: flex;
+  flex: none;
+  list-style: none;
+  padding: 0;
+}
+
+.marquee-list li {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marquee-list svg {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-toggle {
+    display: none;
+  }
+}

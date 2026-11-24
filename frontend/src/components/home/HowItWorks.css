@@ -1,0 +1,75 @@
+.how-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+
+/* Dashed line joining the step icons on wide screens */
+.how-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 12%;
+  right: 12%;
+  border-top: 2px dashed rgba(46, 232, 106, 0.35);
+}
+
+.how-step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.how-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--bg);
+  background: var(--green);
+  color: var(--on-green);
+  transition: transform 500ms var(--ease-spring);
+}
+
+.how-step:hover .how-icon {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.how-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.how-step h3 {
+  font-size: 1.3rem;
+}
+
+.how-step p {
+  max-width: 26ch;
+  color: var(--text-soft);
+  font-size: 0.97rem;
+}
+
+@media (max-width: 860px) {
+  .how-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 40px;
+  }
+
+  .how-steps::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+}

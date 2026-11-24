@@ -1,26 +1,27 @@
-
-import React from 'react';
-import CourseCard from '../components/CourseCard';
+import CourseCard from '../components/cards/CourseCard';
 import ContactForm from '../components/ContactForm';
-import '../styles/Courses.css';
-
-const courseList = [
-  { id: 1, title: 'Frontend Development', duration: '3 months', description: 'Master HTML, CSS, JavaScript, and React.', price: '$300' },
-  { id: 2, title: 'Backend Development', duration: '3 months', description: 'Learn Node.js, Express, MongoDB, and APIs.', price: '$350' },
-  { id: 3, title: 'Fullstack Development', duration: '6 months', description: 'Combine frontend and backend skills.', price: '$600' },
-  { id: 4, title: 'Graphics Design', duration: '4 months', description: 'Dive into data science and neural networks.', price: '$450' },
-];
+import { courses } from '../data/courses';
+import '../components/home/CoursePreview.css';
 
 const Courses = () => (
-  <div className="courses">
-	<h1>Our Courses</h1>
-	<div className="course-list">
-	  {courseList.map(course => (
-		<CourseCard key={course.id} {...course} />
-	  ))}
-	</div>
-	<ContactForm page="courses" courses={courseList} />
-  </div>
+  <section className="section">
+    <div className="container">
+      <div className="section-head">
+        <h1>Our courses</h1>
+        <p>Every course is online, hands-on and built for beginners who want real skills.</p>
+      </div>
+      <ul className="course-grid" role="list">
+        {courses.map((course, i) => (
+          <li key={course.slug} className="course-grid-item" style={{ '--i': i }}>
+            <CourseCard course={course} />
+          </li>
+        ))}
+      </ul>
+      <div style={{ marginTop: 64 }}>
+        <ContactForm page="courses" courses={courses.map((c) => ({ id: c.slug, title: c.title }))} />
+      </div>
+    </div>
+  </section>
 );
 
 export default Courses;
