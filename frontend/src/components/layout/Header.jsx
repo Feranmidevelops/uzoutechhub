@@ -70,13 +70,18 @@ const Header = () => {
           <ul role="list">
             {navLinks.map((link, i) => (
               <li key={link.to} style={{ '--i': i }}>
-                <NavLink to={link.to} end={link.to === '/'} className="mobile-link">
+                <NavLink
+                  to={link.to}
+                  end={link.to === '/'}
+                  className="mobile-link"
+                  onClick={() => setOpen(false)}
+                >
                   {link.label}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <Link to="/contact" className="btn mobile-cta">
+          <Link to="/contact" className="btn mobile-cta" onClick={() => setOpen(false)}>
             Join the next cohort <ArrowRight aria-hidden="true" />
           </Link>
         </nav>
