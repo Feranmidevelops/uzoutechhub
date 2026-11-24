@@ -4,11 +4,30 @@
     var(--bg);
 }
 
+/* Wide screens: intro and contact cards on the left, form on the right.
+   Phones: intro, then the form, then the cards (the source order). */
 .contact-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-areas:
+    'intro form'
+    'cards form';
+  grid-template-rows: auto 1fr;
   align-items: start;
-  gap: clamp(36px, 6vw, 80px);
+  column-gap: clamp(36px, 6vw, 80px);
+  row-gap: 28px;
+}
+
+.contact-intro {
+  grid-area: intro;
+}
+
+.contact-form-wrap {
+  grid-area: form;
+}
+
+.contact-cards {
+  grid-area: cards;
 }
 
 .contact-intro {
@@ -44,7 +63,6 @@
   display: grid;
   gap: 12px;
   width: 100%;
-  margin-top: 8px;
   list-style: none;
   padding: 0;
 }
@@ -104,5 +122,10 @@ a.contact-card:hover {
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'form'
+      'cards';
+    grid-template-rows: auto;
   }
 }
