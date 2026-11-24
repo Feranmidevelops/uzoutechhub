@@ -11,7 +11,13 @@
   padding: 0;
 }
 
+/* Featured story is a tall card on the left; the last story spans the
+   remaining width so the grid has no empty cells */
 .testimonial-grid li.is-featured {
+  grid-row: span 2;
+}
+
+.testimonial-grid li:last-child {
   grid-column: span 2;
 }
 
@@ -27,6 +33,11 @@
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .testimonial-grid li.is-featured {
+    grid-row: auto;
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 600px) {
@@ -34,7 +45,8 @@
     grid-template-columns: 1fr;
   }
 
-  .testimonial-grid li.is-featured {
+  .testimonial-grid li.is-featured,
+  .testimonial-grid li:last-child {
     grid-column: auto;
   }
 }
