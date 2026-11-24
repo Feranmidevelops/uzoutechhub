@@ -19,9 +19,20 @@ const interestFromSlug = (slug) => {
 
 const empty = { name: '', email: '', course: '', message: '' };
 
+const NETWORK_ERROR = 'We couldn’t send your message. Check your connection and try again.';
+
+// Use the server's own explanation when it gives one (a field that needs
+// fixing, or too many messages), otherwise a general network message.
+const messageFor = (error) => {
+  const body = error?.response?.data;
+  const firstField = body?.fields && Object.values(body.fields)[0];
+  return firstField || body?.error || NETWORK_ERROR;
+};
+
 const ContactForm = ({ initialCourse }) => {
   const [form, setForm] = useState(() => ({ ...empty, course: interestFromSlug(initialCourse) }));
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [errorMessage, setErrorMessage] = useState('');
   const successRef = useRef(null);
   const errorRef = useRef(null);
   const nameRef = useRef(null);
@@ -50,10 +61,11 @@ const ContactForm = ({ initialCourse }) => {
     if (status === 'sending') return;
     setStatus('sending');
     try {
-      await submitContact(form);
+      await submitContact({ ...form, website: e.currentTarget.website.value });
       setStatus('sent');
       setForm(empty);
-    } catch {
+    } catch (error) {
+      setErrorMessage(messageFor(error));
       setStatus('error');
     }
   };
@@ -148,10 +160,17 @@ const ContactForm = ({ initialCourse }) => {
         />
       </div>
 
+      {/* Spam trap: hidden from people and screen readers, but bots that fill
+          in every field fill this one too, and the server drops those. */}
+      <div className="form-trap" aria-hidden="true">
+        <label htmlFor="cf-website">Website</label>
+        <input id="cf-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+      </div>
+
       {status === 'error' && (
         <p className="form-error" role="alert" tabIndex={-1} ref={errorRef}>
           <CircleAlert aria-hidden="true" />
-          We couldn’t send your message. Check your connection and try again.
+          {errorMessage || NETWORK_ERROR}
         </p>
       )}
 
