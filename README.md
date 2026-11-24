@@ -31,7 +31,8 @@ npm run dev            # http://localhost:5173
 ```
 
 In development the Vite server forwards every `/api` request to the backend
-on port 5000, so the frontend needs no extra settings.
+on port 5000, so the frontend needs no extra settings. If you change the
+backend `PORT`, update the proxy target in `frontend/vite.config.js` too.
 
 ## Environment variables
 
