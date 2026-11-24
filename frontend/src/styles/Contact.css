@@ -1,0 +1,131 @@
+.contact-page {
+  background:
+    radial-gradient(560px 380px at 10% 10%, rgba(46, 232, 106, 0.12), transparent 70%),
+    var(--bg);
+}
+
+/* Wide screens: intro and contact cards on the left, form on the right.
+   Phones: intro, then the form, then the cards (the source order). */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-areas:
+    'intro form'
+    'cards form';
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  column-gap: clamp(36px, 6vw, 80px);
+  row-gap: 28px;
+}
+
+.contact-intro {
+  grid-area: intro;
+}
+
+.contact-form-wrap {
+  grid-area: form;
+}
+
+.contact-cards {
+  grid-area: cards;
+}
+
+.contact-intro {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.contact-intro h1 {
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.contact-lead {
+  color: var(--text-soft);
+  font-size: var(--step-1);
+}
+
+.contact-page .hero-in {
+  animation: contact-rise 800ms var(--ease-out) both;
+  animation-delay: calc(100ms + var(--i, 0) * 90ms);
+}
+
+@keyframes contact-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+.contact-cards {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    border-color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+a.contact-card:hover {
+  border-color: rgba(46, 232, 106, 0.45);
+  transform: translateX(4px);
+}
+
+.contact-card strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.contact-card span span {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.contact-card-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.contact-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-card-arrow {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'form'
+      'cards';
+    grid-template-rows: auto;
+  }
+}

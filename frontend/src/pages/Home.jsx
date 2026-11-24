@@ -8,20 +8,25 @@ import HowItWorks from '../components/home/HowItWorks';
 import TechDiscuss from '../components/home/TechDiscuss';
 import Testimonials from '../components/home/Testimonials';
 import CtaBand from '../components/home/CtaBand';
+import { usePageTitle } from '../hooks/usePageTitle';
 
-const Home = () => (
-  <>
-    <Hero />
-    <Marquee />
-    <Features />
-    <YoungTechy />
-    <Stats />
-    <CoursePreview />
-    <HowItWorks />
-    <TechDiscuss />
-    <Testimonials />
-    <CtaBand />
-  </>
-);
+const Home = () => {
+  usePageTitle();
+
+  return (
+    <>
+      <Hero />
+      <Marquee />
+      <Features />
+      <YoungTechy />
+      <Stats />
+      <CoursePreview />
+      <HowItWorks />
+      <TechDiscuss />
+      <Testimonials />
+      <CtaBand />
+    </>
+  );
+};
 
 export default Home;

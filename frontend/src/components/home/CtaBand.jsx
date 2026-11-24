@@ -19,7 +19,7 @@ const CtaBand = () => (
           height="900"
         />
         <div className="cta-content">
-          <h2>Your tech journey can start this cohort</h2>
+          <h2>Start your tech journey</h2>
           <p>Tell us what you want to learn. We’ll help you pick the right track and let you know when applications open.</p>
           <div className="cta-actions">
             <Link to="/contact" className="btn">
