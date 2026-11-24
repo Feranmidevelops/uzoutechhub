@@ -28,7 +28,11 @@ const CountUp = ({ end, suffix = '', duration = 1400 }) => {
   }, [inView, end, duration]);
 
   return (
-    <span ref={ref} aria-label={`${end}${suffix}`}>
+    <span ref={ref}>
+      <span className="visually-hidden">
+        {end}
+        {suffix}
+      </span>
       <span aria-hidden="true">
         {value}
         {suffix}
