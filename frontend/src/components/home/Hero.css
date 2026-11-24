@@ -18,9 +18,9 @@
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: clamp(40px, 6vw, 80px);
+  gap: clamp(40px, 5vw, 72px);
 }
 
 .hero-copy {
@@ -29,8 +29,9 @@
   justify-items: start;
 }
 
+/* Sized so each of the two lines stays on one line at every width */
 .hero-title {
-  font-size: var(--step-4);
+  font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.4rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.045em;
@@ -49,9 +50,10 @@
 }
 
 .hero-proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 36px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 12px clamp(20px, 4vw, 40px);
   margin-top: 8px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
