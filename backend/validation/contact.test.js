@@ -45,8 +45,11 @@ test('ignores non-string values such as Mongo operators', () => {
   assert.ok(errors.name && errors.email && errors.message);
 });
 
-test('flags the hidden honeypot field', () => {
-  assert.equal(isLikelySpam({ website: 'http://spam.example' }), true);
-  assert.equal(isLikelySpam({ website: '' }), false);
+test('flags the hidden honeypot field, whatever type it is', () => {
+  assert.equal(isLikelySpam({ contact_check: 'http://spam.example' }), true);
+  assert.equal(isLikelySpam({ contact_check: 1 }), true);
+  assert.equal(isLikelySpam({ contact_check: ['x'] }), true);
+  assert.equal(isLikelySpam({ contact_check: '  ' }), false);
+  assert.equal(isLikelySpam({ website: 'autofilled' }), false);
   assert.equal(isLikelySpam({}), false);
 });
