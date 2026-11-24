@@ -1,0 +1,144 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(6, 8, 6, 0.72);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out);
+}
+
+.site-header.is-scrolled,
+.site-header.is-open {
+  background: rgba(6, 8, 6, 0.94);
+  border-bottom-color: var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 76px;
+}
+
+.header-nav {
+  margin-left: auto;
+}
+
+.header-nav ul {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-link {
+  position: relative;
+  display: block;
+  padding: 10px 16px;
+  border-radius: var(--pill);
+  color: var(--text-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out);
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.nav-link.active {
+  color: var(--green);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.menu-toggle {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.menu-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mobile-menu {
+  border-top: 1px solid var(--line);
+  height: calc(100svh - 76px);
+  overflow-y: auto;
+}
+
+.mobile-menu nav {
+  display: grid;
+  gap: 28px;
+  padding: 28px var(--gutter) 40px;
+}
+
+.mobile-link {
+  display: block;
+  padding: 10px 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.mobile-link.active {
+  color: var(--green);
+}
+
+.mobile-menu li {
+  animation: menu-in 420ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.mobile-cta {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .header-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: grid;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu {
+    display: none;
+  }
+}
