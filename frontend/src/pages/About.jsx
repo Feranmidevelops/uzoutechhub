@@ -55,7 +55,7 @@ const About = () => {
     <>
       <PageHero
         kicker="About Uzou TechEd Hub"
-        title="Preparing young Africans for global opportunities"
+        title="Growing Africa’s next tech talent"
         lead={site.description}
         image={images.mentor}
         secondImage={images.pairLaptop}
