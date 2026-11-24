@@ -1,0 +1,60 @@
+.stats-section {
+  padding-block: clamp(56px, 7vw, 96px) 0;
+}
+
+.stats-panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: var(--radius-lg);
+  background: var(--green);
+  color: var(--on-green);
+}
+
+.stats-panel::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 36px solid rgba(4, 18, 7, 0.08);
+}
+
+.stats-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  padding-left: 20px;
+  border-left: 2px solid rgba(4, 18, 7, 0.18);
+}
+
+.stat dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 2rem + 3vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.stat dt {
+  max-width: 18ch;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+@media (max-width: 860px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+}
