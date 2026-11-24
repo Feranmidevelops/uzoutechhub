@@ -23,8 +23,8 @@ const YoungTechy = () => (
       <Reveal className="yt-media">
         <figure className="yt-photo yt-photo-main">
           <img
-            src={images.teensGroup.src(900)}
-            alt={images.teensGroup.alt}
+            src={images.studyGroup.src(900)}
+            alt={images.studyGroup.alt}
             loading="lazy"
             width="900"
             height="700"

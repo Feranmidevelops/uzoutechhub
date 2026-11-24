@@ -19,7 +19,7 @@ export const images = {
   },
   teensGroup: {
     ...unsplash('1683174411274-2adb89891739'),
-    alt: 'A group of teenage girls sitting together and smiling',
+    alt: 'A group of teenage girls sitting together in a classroom',
   },
   pairLaptop: {
     ...unsplash('1645620766046-b129a9c5f658'),
