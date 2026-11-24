@@ -209,7 +209,7 @@
 .hero-chip small {
   display: block;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
 }
 
 @keyframes chip-in {

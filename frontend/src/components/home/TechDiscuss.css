@@ -112,7 +112,7 @@
   border-radius: var(--pill);
   background: rgba(6, 8, 6, 0.85);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
 }
 
 .td-editions {
@@ -154,7 +154,7 @@
 
 .td-date small {
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   text-transform: uppercase;
 }
 
@@ -166,7 +166,7 @@
 .td-edition-month {
   color: var(--green);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
 }
 
 .td-edition-theme {
@@ -182,7 +182,7 @@
   align-items: center;
   gap: 6px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
 }
 
 .td-edition-host svg {
