@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import Logo from '../Logo';
@@ -8,6 +8,7 @@ import './Header.css';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef(null);
   const { pathname } = useLocation();
 
   // Close the mobile menu whenever the route changes.
@@ -20,10 +21,23 @@ const Header = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Widening past the mobile breakpoint hides the menu, so close it too,
+  // otherwise the page would stay scroll-locked with no way to unlock it.
+  useEffect(() => {
+    const wide = window.matchMedia('(min-width: 901px)');
+    const onChange = (e) => e.matches && setOpen(false);
+    wide.addEventListener('change', onChange);
+    return () => wide.removeEventListener('change', onChange);
+  }, []);
+
   // Escape closes the menu, and the page behind it stops scrolling.
   useEffect(() => {
     if (!open) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
@@ -54,6 +68,7 @@ const Header = () => {
         </Link>
 
         <button
+          ref={toggleRef}
           type="button"
           className="menu-toggle"
           aria-expanded={open}
@@ -70,13 +85,18 @@ const Header = () => {
           <ul role="list">
             {navLinks.map((link, i) => (
               <li key={link.to} style={{ '--i': i }}>
-                <NavLink to={link.to} end={link.to === '/'} className="mobile-link">
+                <NavLink
+                  to={link.to}
+                  end={link.to === '/'}
+                  className="mobile-link"
+                  onClick={() => setOpen(false)}
+                >
                   {link.label}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <Link to="/contact" className="btn mobile-cta">
+          <Link to="/contact" className="btn mobile-cta" onClick={() => setOpen(false)}>
             Join the next cohort <ArrowRight aria-hidden="true" />
           </Link>
         </nav>
