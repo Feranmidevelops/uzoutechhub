@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import Logo from '../Logo';
@@ -8,6 +8,7 @@ import './Header.css';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef(null);
   const { pathname } = useLocation();
 
   // Close the mobile menu whenever the route changes.
@@ -32,7 +33,11 @@ const Header = () => {
   // Escape closes the menu, and the page behind it stops scrolling.
   useEffect(() => {
     if (!open) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
@@ -63,6 +68,7 @@ const Header = () => {
         </Link>
 
         <button
+          ref={toggleRef}
           type="button"
           className="menu-toggle"
           aria-expanded={open}
