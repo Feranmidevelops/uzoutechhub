@@ -21,7 +21,8 @@ if (allowedOrigins.length > 0) {
   app.use(cors({ origin: allowedOrigins, methods: ['POST'] }));
 }
 
-app.use(express.json());
+// A contact message is tiny; anything bigger is refused with a 413.
+app.use(express.json({ limit: '10kb' }));
 
 app.use('/api/contact', contactRoutes);
 
