@@ -200,6 +200,11 @@ p {
   border: 0;
 }
 
+/* main receives focus from the skip link; it needs no outline of its own */
+main:focus {
+  outline: none;
+}
+
 .skip-link {
   position: absolute;
   left: var(--gutter);
