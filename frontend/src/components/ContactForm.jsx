@@ -134,7 +134,9 @@ const ContactForm = ({ initialCourse }) => {
         </p>
       )}
 
-      <button type="submit" className="btn form-submit" disabled={sending}>
+      {/* aria-disabled (not disabled) keeps keyboard focus on the button while
+          sending; handleSubmit already ignores repeat submits. */}
+      <button type="submit" className="btn form-submit" aria-disabled={sending}>
         {sending ? (
           <>
             <LoaderCircle className="spin" aria-hidden="true" /> Sending…
