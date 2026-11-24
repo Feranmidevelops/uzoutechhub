@@ -6,9 +6,6 @@ import { techDiscuss } from '../../data/events';
 import { site } from '../../data/site';
 import './TechDiscuss.css';
 
-const dayOf = (date) => date.split(' ')[1];
-const monthOf = (date) => date.split(' ')[2];
-
 const TechDiscuss = () => (
   <section className="section tech-discuss" id="tech-discuss">
     <div className="container td-grid">
@@ -56,8 +53,8 @@ const TechDiscuss = () => (
           {techDiscuss.editions.map((ed, i) => (
             <Reveal as="li" key={ed.theme} delay={120 + i * 120} className="td-edition">
               <span className="td-date" aria-hidden="true">
-                <span>{dayOf(ed.date)}</span>
-                <small>{monthOf(ed.date)}</small>
+                <span>{ed.day}</span>
+                <small>{ed.shortMonth}</small>
               </span>
               <span className="td-edition-body">
                 <span className="td-edition-month">{ed.month} edition</span>

@@ -67,7 +67,7 @@ const Hero = () => (
           <img
             src={images.heroLaptop.src(900)}
             srcSet={`${images.heroLaptop.src(600)} 600w, ${images.heroLaptop.src(900)} 900w, ${images.heroLaptop.src(1300)} 1300w`}
-            sizes="(max-width: 900px) 80vw, 460px"
+            sizes="(max-width: 900px) 62vw, 340px"
             alt={images.heroLaptop.alt}
             width="900"
             height="1100"
