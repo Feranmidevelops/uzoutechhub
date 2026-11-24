@@ -10,7 +10,7 @@ const CtaBand = () => (
       <Reveal className="cta-panel">
         <img
           className="cta-photo"
-          src={images.classroom.src(1600)}
+          src={images.communityOutdoors.src(1600)}
           alt=""
           loading="lazy"
           width="1600"
