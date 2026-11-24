@@ -39,6 +39,8 @@ const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 10,
   keyGenerator: visitorKey,
+  // Only real submissions count towards the limit.
+  skip: (req) => req.method !== 'POST',
   standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: { error: 'Too many messages from this connection. Please try again in a few minutes.' },
