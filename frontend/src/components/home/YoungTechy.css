@@ -1,0 +1,177 @@
+.young-techy {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.yt-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 88px);
+}
+
+.yt-media {
+  position: relative;
+  aspect-ratio: 1 / 1.02;
+}
+
+.yt-photo {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.yt-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-out);
+}
+
+.yt-photo:hover img {
+  transform: scale(1.05);
+}
+
+.yt-photo-main {
+  top: 0;
+  left: 0;
+  width: 78%;
+  height: 78%;
+  border-radius: var(--radius-lg);
+}
+
+.yt-photo-small {
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 50%;
+  border-radius: var(--radius-lg);
+  border: 8px solid var(--surface);
+}
+
+.yt-badge {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--lime);
+  color: var(--on-green);
+  font-size: 0.85rem;
+  font-weight: 600;
+  animation: float 6s ease-in-out infinite;
+}
+
+.yt-badge svg {
+  width: 28px;
+  height: 28px;
+}
+
+.yt-badge strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.yt-copy {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+.yt-copy h2 {
+  font-size: var(--step-3);
+}
+
+.yt-lead {
+  color: var(--text-soft);
+  font-size: var(--step-1);
+}
+
+.yt-list {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.yt-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.yt-list svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  color: var(--green);
+}
+
+.yt-cohorts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.yt-cohorts li {
+  display: grid;
+  gap: 2px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.yt-cohorts li.is-next {
+  border-style: dashed;
+  border-color: rgba(46, 232, 106, 0.5);
+}
+
+.yt-cohort-name {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1.05rem;
+}
+
+.yt-cohort-dates,
+.yt-cohort-detail {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.yt-cohort-grads {
+  margin-top: 6px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .yt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yt-media {
+    max-width: 560px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .yt-cohorts {
+    grid-template-columns: 1fr;
+  }
+}
