@@ -54,7 +54,7 @@
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--green);
   box-shadow: 0 0 0 4px var(--green-soft);
 }
