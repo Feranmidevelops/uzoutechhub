@@ -20,6 +20,15 @@ const Header = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Widening past the mobile breakpoint hides the menu, so close it too,
+  // otherwise the page would stay scroll-locked with no way to unlock it.
+  useEffect(() => {
+    const wide = window.matchMedia('(min-width: 901px)');
+    const onChange = (e) => e.matches && setOpen(false);
+    wide.addEventListener('change', onChange);
+    return () => wide.removeEventListener('change', onChange);
+  }, []);
+
   // Escape closes the menu, and the page behind it stops scrolling.
   useEffect(() => {
     if (!open) return undefined;
