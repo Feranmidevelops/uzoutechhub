@@ -26,7 +26,15 @@ if (!process.env.MONGO_URI) {
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log('MongoDB connected');
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, (error) => {
+    // Express 5 passes listen errors (like a port already in use) here
+    // instead of throwing, so handle them explicitly.
+    if (error) {
+      console.error(`Could not start the server on port ${PORT}:`, error.message);
+      process.exit(1);
+    }
+    console.log(`Server running on port ${PORT}`);
+  });
 })
 .catch((error) => {
   console.error('MongoDB connection error:', error.message);
