@@ -1,34 +1,203 @@
-.about {
-  padding: 2rem;
-  background-color: #000;
-  color: #e5e5e5;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.6;
+/* Mission and vision */
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.about h1,
-.about h2 {
-  color: #01e915;
-  margin-bottom: 1rem;
+.mv-card {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
 }
 
-.about ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-  color: #d1d5db;
+.mv-card h2 {
+  font-size: var(--step-2);
 }
 
-@media (max-width: 768px) {
-  .about {
-    padding: 1.5rem;
+.mv-card p {
+  color: var(--text-soft);
+  font-size: var(--step-1);
+}
+
+.mv-mission {
+  border-color: transparent;
+  background: var(--green);
+  color: var(--on-green);
+}
+
+.mv-mission p {
+  color: rgba(4, 18, 7, 0.82);
+}
+
+.mv-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.mv-mission .mv-icon {
+  background: var(--on-green);
+  color: var(--green);
+}
+
+.mv-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* What we do */
+.about-pillars {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.pillars-photo {
+  overflow: hidden;
+  aspect-ratio: 9 / 10;
+  border-radius: var(--radius-lg);
+}
+
+.pillars-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pillars-list {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+}
+
+.pillar {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.pillar-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--green);
+  color: var(--on-green);
+}
+
+.pillar-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pillar h3 {
+  font-size: 1.2rem;
+}
+
+.pillar p {
+  margin-top: 4px;
+  color: var(--text-soft);
+}
+
+/* Values */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.values-grid > li {
+  height: 100%;
+}
+
+.value-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  height: 100%;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition:
+    border-color 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+}
+
+.value-card:hover {
+  border-color: rgba(46, 232, 106, 0.4);
+  transform: translateY(-4px);
+}
+
+.value-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green);
+  transition: transform 500ms var(--ease-spring);
+}
+
+.value-card:hover .value-icon {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.value-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+}
+
+.value-card p {
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .mv-grid,
+  .pillars-grid {
+    grid-template-columns: 1fr;
   }
 
-  .about h1 {
-    font-size: 1.75rem;
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about p {
-    font-size: 1rem;
+  .pillars-photo {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 560px) {
+  .values-grid {
+    grid-template-columns: 1fr;
   }
 }

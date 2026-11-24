@@ -1,65 +1,141 @@
-import React from "react";
-import "../styles/About.css";
+import {
+  Target,
+  Eye,
+  TrendingUp,
+  HeartHandshake,
+  ShieldCheck,
+  Handshake,
+  Sprout,
+  Lightbulb,
+  GraduationCap,
+  Briefcase,
+  Rocket,
+} from 'lucide-react';
+import PageHero from '../components/PageHero';
+import Reveal from '../components/ui/Reveal';
+import Stats from '../components/home/Stats';
+import Testimonials from '../components/home/Testimonials';
+import CtaBand from '../components/home/CtaBand';
+import { images } from '../data/images';
+import { site } from '../data/site';
+import '../styles/About.css';
+
+const pillars = [
+  {
+    icon: GraduationCap,
+    title: 'Talent development',
+    text: 'Free and low-cost programs like Young & Techy that give teenagers a head start in digital skills.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Career training',
+    text: 'Hands-on courses in design, code, data and digital business, built around what employers hire for.',
+  },
+  {
+    icon: Rocket,
+    title: 'Technology innovation',
+    text: 'Live sessions like The Tech Discuss that keep young people close to where technology is heading.',
+  },
+];
+
+const values = [
+  { icon: TrendingUp, title: 'Excellence & growth', text: 'We keep learning and improving, and hold our teaching to a high standard.' },
+  { icon: HeartHandshake, title: 'Respect & inclusivity', text: 'Everyone is welcome, valued and heard, whatever their background.' },
+  { icon: ShieldCheck, title: 'Integrity & accountability', text: 'We act honestly and openly, and own our responsibilities to our community.' },
+  { icon: Handshake, title: 'Collaboration & teamwork', text: 'We believe shared effort and open communication lead to better work.' },
+  { icon: Sprout, title: 'Empowerment & support', text: 'We encourage initiative and create chances for everyone to reach their potential.' },
+  { icon: Lightbulb, title: 'Adaptability & innovation', text: 'We embrace change and look for creative answers to new needs.' },
+];
 
 const About = () => (
-  <div className="about">
-    <h1>About TechHub Pro</h1>
-    <p>
-      Uzou TechEd Academy is a technology education Institute committed to
-      transforming and reimagining the education system from the ground up. Our
-      mission is to integrate technology at the foundational level by providing
-      access to tech tools, shaping tech learning experiences, and influencing
-      policy in education. We focus on empowering schools, teachers, and
-      students with the knowledge, resources, and confidence to thrive in a
-      tech-driven world.
-    </p>
+  <>
+    <PageHero
+      kicker="About Uzou TechEd Hub"
+      title="Preparing young Africans for global opportunities"
+      lead={site.description}
+      image={images.mentor}
+      secondImage={images.pairLaptop}
+    />
 
-    <h1>Vision</h1>
+    <section className="section">
+      <div className="container mv-grid">
+        <Reveal className="mv-card mv-mission">
+          <span className="mv-icon" aria-hidden="true">
+            <Target />
+          </span>
+          <h2>Our mission</h2>
+          <p>
+            To empower the next generation of technology innovators through hands-on, project-based tech education
+            that builds creativity, problem-solving, collaboration and digital fluency.
+          </p>
+        </Reveal>
+        <Reveal className="mv-card" delay={100}>
+          <span className="mv-icon" aria-hidden="true">
+            <Eye />
+          </span>
+          <h2>Our vision</h2>
+          <p>
+            To become a leading provider of technology education, and to help make Africa a home of technology
+            consumers and creators who drive the next wave of innovation.
+          </p>
+        </Reveal>
+      </div>
+    </section>
 
-    <p>
-      Our vision is to become the leading global provider of technology
-      education, shaping the future of tech learning and policy. We aspire to
-      transform Africa into the technology capital of the world by nurturing
-      young minds into adept technology consumers and creators, capable of
-      driving the next wave of innovation and digital excellence
-    </p>
+    <section className="section about-pillars">
+      <div className="container pillars-grid">
+        <Reveal className="pillars-photo">
+          <img src={images.communityOutdoors.src(900)} alt={images.communityOutdoors.alt} loading="lazy" width="900" height="1000" />
+        </Reveal>
+        <div>
+          <Reveal className="section-head">
+            <h2>What we do</h2>
+            <p>We start at the foundation: giving young people tools, teaching and confidence early.</p>
+          </Reveal>
+          <ul className="pillars-list" role="list">
+            {pillars.map(({ icon: Icon, title, text }, i) => (
+              <Reveal as="li" key={title} delay={i * 90} className="pillar">
+                <span className="pillar-icon" aria-hidden="true">
+                  <Icon />
+                </span>
+                <span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </span>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <h1>Mission</h1>
+    <Stats />
 
-    <p>
-      Our Digital Academy is dedicated to empowering the next generation of
-      technology innovators by providing hands-on, project-based tech education
-      that fosters creativity, problem-solving, collaboration, and digital
-      fluency.
-    </p>
+    <section className="section">
+      <div className="container">
+        <Reveal className="section-head center">
+          <h2>The values behind everything we do</h2>
+          <p>How we work with students, staff and partners, at every level.</p>
+        </Reveal>
+        <ul className="values-grid" role="list">
+          {values.map(({ icon: Icon, title, text }, i) => (
+            <Reveal as="li" key={title} delay={(i % 3) * 90}>
+              <div className="value-card">
+                <span className="value-icon" aria-hidden="true">
+                  <Icon />
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
 
-    <h1>Core Value</h1>
-
-    <p>
-      Our academy is built on a foundation of shared values and principles that
-      guide everything we do. These values represent who we are and how we
-      operate, across all levels and roles, whether you are a student, staff
-      member, or partner. 1. Excellence & Growth We commit to continuous
-      learning, improvement, and delivering the highest standards in education
-      and operations. 2. Respect & Inclusivity We foster a welcoming environment
-      where every individual is valued, heard, and respected regardless of
-      background or role. 3. Integrity & Accountability We act with honesty,
-      transparency, and responsibility in all our actions, holding ourselves
-      accountable to our community. 4. Collaboration & Teamwork We believe that
-      collective effort and open communication lead to stronger outcomes and
-      innovation. 5. Empowerment & Support We encourage initiative, provide
-      support, and create opportunities for everyone to reach their full
-      potential. 6. Adaptability & Innovation We embrace change and continuously
-      seek creative solutions to meet evolving needs.
-    </p>
-
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>Real-world projects with industry experts</li>
-      <li>Job-ready curriculum tailored to employer needs</li>
-      <li>Global alumni network and career support</li>
-    </ul>
-  </div>
+    <Testimonials />
+    <CtaBand />
+  </>
 );
 
 export default About;
