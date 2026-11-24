@@ -102,10 +102,10 @@ const About = () => {
                   <span className="pillar-icon" aria-hidden="true">
                     <Icon />
                   </span>
-                  <span>
+                  <div>
                     <h3>{title}</h3>
                     <p>{text}</p>
-                  </span>
+                  </div>
                 </Reveal>
               ))}
             </ul>
