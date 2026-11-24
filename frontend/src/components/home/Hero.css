@@ -216,12 +216,6 @@
   }
 }
 
-@keyframes float {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
 .chip-live {
   top: 12%;
   left: 0;

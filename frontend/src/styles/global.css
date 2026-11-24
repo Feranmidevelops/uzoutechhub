@@ -296,6 +296,13 @@ p {
   transform: none;
 }
 
+/* Gentle bobbing used by floating badges and chips */
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
