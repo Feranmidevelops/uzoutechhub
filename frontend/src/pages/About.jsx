@@ -52,94 +52,94 @@ const About = () => {
   usePageTitle('About');
 
   return (
-  <>
-    <PageHero
-      kicker="About Uzou TechEd Hub"
-      title="Preparing young Africans for global opportunities"
-      lead={site.description}
-      image={images.mentor}
-      secondImage={images.pairLaptop}
-    />
+    <>
+      <PageHero
+        kicker="About Uzou TechEd Hub"
+        title="Preparing young Africans for global opportunities"
+        lead={site.description}
+        image={images.mentor}
+        secondImage={images.pairLaptop}
+      />
 
-    <section className="section">
-      <div className="container mv-grid">
-        <Reveal className="mv-card mv-mission">
-          <span className="mv-icon" aria-hidden="true">
-            <Target />
-          </span>
-          <h2>Our mission</h2>
-          <p>
-            To empower the next generation of technology innovators through hands-on, project-based tech education
-            that builds creativity, problem-solving, collaboration and digital fluency.
-          </p>
-        </Reveal>
-        <Reveal className="mv-card" delay={100}>
-          <span className="mv-icon" aria-hidden="true">
-            <Eye />
-          </span>
-          <h2>Our vision</h2>
-          <p>
-            To become a leading provider of technology education, and to help make Africa a home of technology
-            consumers and creators who drive the next wave of innovation.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-
-    <section className="section about-pillars">
-      <div className="container pillars-grid">
-        <Reveal className="pillars-photo">
-          <img src={images.communityOutdoors.src(900)} alt={images.communityOutdoors.alt} loading="lazy" width="900" height="1000" />
-        </Reveal>
-        <div>
-          <Reveal className="section-head">
-            <h2>What we do</h2>
-            <p>We start at the foundation: giving young people tools, teaching and confidence early.</p>
+      <section className="section">
+        <div className="container mv-grid">
+          <Reveal className="mv-card mv-mission">
+            <span className="mv-icon" aria-hidden="true">
+              <Target />
+            </span>
+            <h2>Our mission</h2>
+            <p>
+              To empower the next generation of technology innovators through hands-on, project-based tech education
+              that builds creativity, problem-solving, collaboration and digital fluency.
+            </p>
           </Reveal>
-          <ul className="pillars-list" role="list">
-            {pillars.map(({ icon: Icon, title, text }, i) => (
-              <Reveal as="li" key={title} delay={i * 90} className="pillar">
-                <span className="pillar-icon" aria-hidden="true">
-                  <Icon />
-                </span>
-                <span>
+          <Reveal className="mv-card" delay={100}>
+            <span className="mv-icon" aria-hidden="true">
+              <Eye />
+            </span>
+            <h2>Our vision</h2>
+            <p>
+              To become a leading provider of technology education, and to help make Africa a home of technology
+              consumers and creators who drive the next wave of innovation.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section about-pillars">
+        <div className="container pillars-grid">
+          <Reveal className="pillars-photo">
+            <img src={images.communityOutdoors.src(900)} alt={images.communityOutdoors.alt} loading="lazy" width="900" height="1000" />
+          </Reveal>
+          <div>
+            <Reveal className="section-head">
+              <h2>What we do</h2>
+              <p>We start at the foundation: giving young people tools, teaching and confidence early.</p>
+            </Reveal>
+            <ul className="pillars-list" role="list">
+              {pillars.map(({ icon: Icon, title, text }, i) => (
+                <Reveal as="li" key={title} delay={i * 90} className="pillar">
+                  <span className="pillar-icon" aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <span>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </span>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <Stats />
+
+      <section className="section">
+        <div className="container">
+          <Reveal className="section-head center">
+            <h2>The values behind everything we do</h2>
+            <p>How we work with students, staff and partners, at every level.</p>
+          </Reveal>
+          <ul className="values-grid" role="list">
+            {values.map(({ icon: Icon, title, text }, i) => (
+              <Reveal as="li" key={title} delay={(i % 3) * 90}>
+                <div className="value-card">
+                  <span className="value-icon" aria-hidden="true">
+                    <Icon />
+                  </span>
                   <h3>{title}</h3>
                   <p>{text}</p>
-                </span>
+                </div>
               </Reveal>
             ))}
           </ul>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <Stats />
-
-    <section className="section">
-      <div className="container">
-        <Reveal className="section-head center">
-          <h2>The values behind everything we do</h2>
-          <p>How we work with students, staff and partners, at every level.</p>
-        </Reveal>
-        <ul className="values-grid" role="list">
-          {values.map(({ icon: Icon, title, text }, i) => (
-            <Reveal as="li" key={title} delay={(i % 3) * 90}>
-              <div className="value-card">
-                <span className="value-icon" aria-hidden="true">
-                  <Icon />
-                </span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <Testimonials />
-    <CtaBand />
-  </>
+      <Testimonials />
+      <CtaBand />
+    </>
   );
 };
 
