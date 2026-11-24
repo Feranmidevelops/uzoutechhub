@@ -82,6 +82,8 @@ const Courses = () => {
             </div>
           </div>
 
+          <h2 className="visually-hidden">All courses</h2>
+
           <p className="courses-count" role="status">
             Showing {results.length} of {courses.length} courses
           </p>
