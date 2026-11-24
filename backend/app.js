@@ -1,10 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const contactRoutes = require('./routes/contactRoutes');
 
 // The Express app on its own, with no database connection or port.
 // server.js runs it locally; the Netlify Function wraps the same app.
 const app = express();
+
+// Standard security headers, and no "X-Powered-By: Express".
+app.use(helmet());
 
 app.use(cors());
 app.use(express.json());
