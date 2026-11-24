@@ -1,36 +1,11 @@
+// Load .env before anything reads process.env.
+require('dotenv').config();
 
-
-const express = require('express');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const cors = require('cors');
-const contactRoutes = require('./routes/contactRoutes')
-dotenv.config();
+const app = require('./app');
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Routes
-app.use('/api/contact', contactRoutes);
-
-// Errors (malformed JSON, a body that is too large, anything unexpected)
-// come back as short JSON messages, never as HTML pages with stack traces.
-app.use((err, req, res, next) => {
-  const status = err.status || err.statusCode || 500;
-  if (status >= 500) console.error('Unhandled error:', err.message);
-
-  let message = 'Something went wrong.';
-  if (status === 413) message = 'The request body is too large.';
-  else if (status < 500) message = 'The request could not be read.';
-
-  res.status(status).json({ error: message });
-});
-
-// MongoDB connection
 if (!process.env.MONGO_URI) {
   console.error('MONGO_URI is not set. Copy .env.example to .env and fill it in.');
   process.exit(1);

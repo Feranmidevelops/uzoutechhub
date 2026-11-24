@@ -143,3 +143,12 @@
 .form-success-title:focus {
   outline: none;
 }
+
+/* Honeypot field: kept off-screen rather than display:none so bots still see it */
+.form-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
