@@ -143,9 +143,9 @@
   }
 }
 
-/* Landscape phones: a compact two-column menu so every link and the
+/* Short screens (landscape phones): a compact two-column menu so every link and the
    button fit on screen without scrolling. */
-@media (max-width: 900px) and (max-height: 560px) {
+@media (max-width: 900px) and (max-height: 520px) {
   .mobile-menu nav {
     gap: 14px;
     padding-block: 14px 18px;
