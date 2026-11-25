@@ -161,7 +161,7 @@
 
 @media (max-width: 900px) {
   .yt-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .yt-media {
@@ -172,6 +172,6 @@
 
 @media (max-width: 520px) {
   .yt-cohorts {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

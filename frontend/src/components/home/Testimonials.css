@@ -42,7 +42,7 @@
 
 @media (max-width: 600px) {
   .testimonial-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .testimonial-grid li.is-featured,
