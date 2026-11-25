@@ -200,3 +200,11 @@
 .course-link:hover svg {
   transform: translate(2px, -2px);
 }
+
+/* Older Safari without aspect-ratio: keep the photo frame's 16:11 shape */
+@supports not (aspect-ratio: 1) {
+  .course-media {
+    height: 0;
+    padding-top: 68.75%;
+  }
+}
