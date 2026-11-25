@@ -5,6 +5,8 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  /* Safari counts a select's padding as overflow; keep it inside the card */
+  overflow: hidden;
 }
 
 .form-row {
@@ -46,6 +48,10 @@
 
 .field select {
   appearance: none;
+  /* Safari sizes selects to their longest option; keep it inside the field */
+  min-width: 0;
+  max-width: 100%;
+  text-overflow: ellipsis;
   padding-right: 44px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232ee86a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
