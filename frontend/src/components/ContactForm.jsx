@@ -129,7 +129,7 @@ const ContactForm = ({ initialCourse }) => {
       <div className="field">
         <label htmlFor="cf-course">What are you interested in?</label>
         <select id="cf-course" name="course" value={form.course} onChange={update}>
-          <option value="">Choose a course or topic (optional)</option>
+          <option value="">Choose one (optional)</option>
           <optgroup label="Courses">
             {courses.map((c) => (
               <option key={c.slug} value={c.title}>

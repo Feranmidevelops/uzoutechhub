@@ -42,7 +42,11 @@ const Contact = () => {
               </span>
               <span>
                 <strong>Email</strong>
-                <span>{site.email}</span>
+                {/* <wbr> lets the address wrap after the @ on narrow phones */}
+                <span>
+                  {site.email.split('@')[0]}@<wbr />
+                  {site.email.split('@')[1]}
+                </span>
               </span>
             </a>
           </Reveal>

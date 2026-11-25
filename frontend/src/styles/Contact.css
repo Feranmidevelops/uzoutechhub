@@ -85,6 +85,11 @@ a.contact-card:hover {
   transform: translateX(4px);
 }
 
+/* Let the text column shrink so long values (the email) can wrap */
+.contact-card > span:not(.contact-card-icon) {
+  min-width: 0;
+}
+
 .contact-card strong {
   display: block;
   font-size: 0.95rem;
@@ -121,7 +126,7 @@ a.contact-card:hover {
 
 @media (max-width: 900px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       'intro'
       'form'

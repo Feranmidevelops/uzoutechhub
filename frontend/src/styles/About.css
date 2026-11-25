@@ -184,7 +184,7 @@
 @media (max-width: 900px) {
   .mv-grid,
   .pillars-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .values-grid {
@@ -198,6 +198,6 @@
 
 @media (max-width: 560px) {
   .values-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

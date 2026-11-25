@@ -1,6 +1,7 @@
 .course-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   height: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -27,7 +28,11 @@
   background: var(--surface-2);
 }
 
+/* Positioned so the photo never sizes its frame. Safari otherwise lets the
+   image's natural width stretch the card far past the phone screen. */
 .course-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -194,4 +199,12 @@
 
 .course-link:hover svg {
   transform: translate(2px, -2px);
+}
+
+/* Older Safari without aspect-ratio: keep the photo frame's 16:11 shape */
+@supports not (aspect-ratio: 1) {
+  .course-media {
+    height: 0;
+    padding-top: 68.75%;
+  }
 }
